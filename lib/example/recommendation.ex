@@ -4,7 +4,7 @@ defmodule Example.Recommendation do
   def get_movies() do
     "pairs.csv"
     |> File.stream!()
-    |> ZataParser.parse_stream()
+    |> ZataParser.parse_stream(skip_headers: false)
     |> Stream.map(fn [one, two] ->
       "#{one} #{two}"
     end)
@@ -24,7 +24,7 @@ defmodule Example.Recommendation do
 
     "pairs.csv"
     |> File.stream!()
-    |> ZataParser.parse_stream()
+    |> ZataParser.parse_stream(skip_headers: false)
     |> Stream.map(fn [one, two] ->
       movies = "#{one} #{two}"
       result = Example.Embedding.get_embedding(movies, vocabulary, model) |> Nx.tensor()
