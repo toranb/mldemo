@@ -1,11 +1,7 @@
 import Config
 
-config :exla, :clients,
-  cuda: [platform: :cuda, preallocate: false],
-  host: [platform: :host]
-
 config :nx, :default_backend, EXLA.Backend
-config :nx, :default_defn_options, [compiler: EXLA, client: :cuda]
+config :nx, :default_defn_options, [compiler: EXLA]
 
 # Configure your database
 config :example, Example.Repo,
